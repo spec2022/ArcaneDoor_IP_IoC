@@ -1,0 +1,13 @@
+let ArcaneDoor1 = externaldata(RemoteIP:string)
+[@"https://raw.githubusercontent.com/spec2022/ArcaneDoor_IP_IoC/main/Threat_Actor_infrastructure_IP_list"]
+with(format="txt");
+ArcaneDoor1
+| join DeviceNetworkEvents on RemoteIP
+//| where ActionType == ConnectionSuccess
+
+let ArcaneDoor2 = externaldata(RemoteIP:string)
+[@"https://raw.githubusercontent.com/spec2022/ArcaneDoor_IP_IoC/main/Threat_Actor_multi-tenant_IP_list"]
+with(format="txt");
+ArcaneDoor2
+| join DeviceNetworkEvents on RemoteIP
+//| where ActionType == ConnectionSuccess
